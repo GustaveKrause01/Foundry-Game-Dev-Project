@@ -2,8 +2,6 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float horizontal;
-    public float vertical;
     public float speed;
     public Rigidbody2D rb;
     public Animator anim;
@@ -12,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 10f;
     public float jumpAngle = 50f;
     public bool isJumping = false;
-
 
     public float jumpControlLockTime = 0.5f;
     private float controlLockTimer = 0f;
@@ -32,14 +29,27 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
-
+        PlayerInput.Instance.Jump += Jump;
     }
 
-    // Update is called once per frame
+    private void OnDestroy()
+    {
+        PlayerInput.Instance.Jump -= Jump;
+    }
+
+    private void Jump()
+    {
+        if (isGrounded && !isJumping)
+        {
+            PerformArcJump();
+            DrawJumpArc();
+        }
+    }
+
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        var horizontal = PlayerInput.Instance.Movement.x;
+        var vertical = PlayerInput.Instance.Movement.y;
 
         // Determine direction (-1 for left, 1 for right)
         float direction = playerDirection.localScale.x >= 0 ? 1f : -1f;
@@ -70,14 +80,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Ninja.transform.localScale = new Vector2(1.5f, 1.5f);
             Debug.Log("Right");
-        }
-
-
-
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded && !isJumping)
-        {
-            PerformArcJump();
-            DrawJumpArc(); // ← This line is new
         }
 
         if (isJumping)
