@@ -5739,9 +5739,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2036473182}
-  - component: {fileID: 2036473181}
   - component: {fileID: 2036473180}
   - component: {fileID: 2036473183}
+  - component: {fileID: 2036473184}
+  - component: {fileID: 2036473185}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -5776,34 +5777,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2036473181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2036473179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 515cac5d4a5851f418163fccfbbb9275, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontal: 0
-  vertical: 0
-  speed: 8
-  rb: {fileID: 0}
-  anim: {fileID: 0}
-  Ninja: {fileID: 2024975767}
-  jumpForce: 7
-  jumpAngle: 50
-  isJumping: 0
-  jumpControlLockTime: 0.5
-  playerDirection: {fileID: 2024975768}
-  groundCheck: {fileID: 1798546077}
-  groundRadius: 0.2
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!4 &2036473182
 Transform:
   m_ObjectHideFlags: 0
@@ -5859,6 +5832,44 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.044316232}
   m_Size: {x: 1, y: 1.1113676}
   m_Direction: 0
+--- !u!114 &2036473184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036473179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce3c470f7923f943b92765c298b9567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2036473185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036473179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25bc69947018daf4b96252e537fa6d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RigidBody2D: {fileID: 2036473180}
+  Animator: {fileID: 2024975769}
+  Ninja: {fileID: 2024975767}
+  speed: 8
+  jumpForce: 7
+  jumpAngle: 50
+  isJumping: 0
+  jumpControlLockTime: 0.5
+  playerDirection: {fileID: 2024975768}
+  groundCheck: {fileID: 1798546077}
+  groundRadius: 0.2
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
