@@ -1113,7 +1113,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NinjaExample2_30
+      name: Rising_kick_1
       rect:
         serializedVersion: 2
         x: 363
@@ -1141,7 +1141,7 @@ TextureImporter:
         x: 431
         y: 718
         width: 65
-        height: 75
+        height: 81
       alignment: 9
       pivot: {x: 0.5, y: 0.4624056}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1163,7 +1163,7 @@ TextureImporter:
         x: 501
         y: 718
         width: 60
-        height: 75
+        height: 81
       alignment: 9
       pivot: {x: 0.5, y: 0.4624056}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1556,10 +1556,10 @@ TextureImporter:
       name: NinjaJump4_2
       rect:
         serializedVersion: 2
-        x: 554
-        y: 524
-        width: 45
-        height: 115
+        x: 724
+        y: 375
+        width: 62
+        height: 133
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1575,13 +1575,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NinjaExample2_51
+      name: Ninja_Land_4
       rect:
         serializedVersion: 2
-        x: 686
-        y: 522
+        x: 694
+        y: 523
         width: 67
-        height: 70
+        height: 90
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1619,13 +1619,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NinjaExample2_53
+      name: Ninja_Land_3
       rect:
         serializedVersion: 2
-        x: 612
-        y: 521
+        x: 616
+        y: 519
         width: 72
-        height: 55
+        height: 89
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1689,9 +1689,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 174
-        y: 420
-        width: 69
-        height: 100
+        y: 432
+        width: 74
+        height: 104
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2235,13 +2235,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NinjaExample2_81
+      name: Ninja_Land_2
       rect:
         serializedVersion: 2
         x: 583
         y: 270
         width: 84
-        height: 34
+        height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2477,50 +2477,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NinjaExample2_92
-      rect:
-        serializedVersion: 2
-        x: 582
-        y: 183
-        width: 60
-        height: 63
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 670c654dfdbb81fa0800000000000000
-      internalID: -5829703147616550794
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: NinjaExample2_93
-      rect:
-        serializedVersion: 2
-        x: 654
-        y: 180
-        width: 72
-        height: 79
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f543807e470deab70800000000000000
-      internalID: 8912289913123648607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: NinjaExample2_94
       rect:
         serializedVersion: 2
@@ -2653,7 +2609,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NinjaExample2_100
+      name: Rising_kick_2
       rect:
         serializedVersion: 2
         x: 499
@@ -2678,8 +2634,8 @@ TextureImporter:
       name: NinjaExample2_101
       rect:
         serializedVersion: 2
-        x: 569
-        y: 92
+        x: 741
+        y: 203
         width: 54
         height: 88
       alignment: 0
@@ -2697,13 +2653,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NinjaExample2_102
+      name: Grapplethrow2
       rect:
         serializedVersion: 2
-        x: 629
-        y: 94
-        width: 84
-        height: 76
+        x: 627
+        y: 120
+        width: 91
+        height: 123
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2785,13 +2741,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NinjaExample2_107
+      name: Throw1
       rect:
         serializedVersion: 2
-        x: 397
-        y: 12
-        width: 106
-        height: 67
+        x: 501
+        y: 2
+        width: 67
+        height: 84
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2807,13 +2763,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NinjaExample2_108
+      name: Throw3
       rect:
         serializedVersion: 2
-        x: 514
-        y: 11
-        width: 68
-        height: 82
+        x: 580
+        y: 2
+        width: 80
+        height: 84
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2829,13 +2785,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: NinjaExample2_109
+      name: Rising_kick_3
       rect:
         serializedVersion: 2
-        x: 602
-        y: 15
-        width: 78
-        height: 58
+        x: 689
+        y: 24
+        width: 99
+        height: 91
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2846,6 +2802,28 @@ TextureImporter:
       bones: []
       spriteID: 09d03333d099da060800000000000000
       internalID: 6966392480584633744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Throw2
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 3
+        width: 82
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 262ec831e832603438f36c35996dd60a
+      internalID: 1872588578
       vertices: []
       indices: 
       edges: []
@@ -2864,19 +2842,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      Grapplethrow2: -4712268163229096760
       NinjaExample2_0: -7322657128727162623
       NinjaExample2_1: -2659508250437047797
       NinjaExample2_10: -8752177754047168228
-      NinjaExample2_100: -3318577444700648402
       NinjaExample2_101: 3145909327805299007
-      NinjaExample2_102: -4712268163229096760
       NinjaExample2_103: -4809707342870458102
       NinjaExample2_104: -7899994706546344665
       NinjaExample2_105: 1230579755228288587
-      NinjaExample2_106: -1951880097
-      NinjaExample2_107: 4008673368682224854
-      NinjaExample2_108: -4566496951654521879
-      NinjaExample2_109: 6966392480584633744
+      NinjaExample2_106: -432145284
       NinjaExample2_11: 2127504657551031098
       NinjaExample2_12: -7385656211662533675
       NinjaExample2_13: -2648788636445596448
@@ -2891,7 +2865,6 @@ TextureImporter:
       NinjaExample2_28: -1200324408955091578
       NinjaExample2_29: -5927244363987747318
       NinjaExample2_3: -3713491369633876991
-      NinjaExample2_30: -1863323545049527356
       NinjaExample2_33: -6545780455447529749
       NinjaExample2_34: -5664837602828101096
       NinjaExample2_35: 339587716799611642
@@ -2909,9 +2882,7 @@ TextureImporter:
       NinjaExample2_47: 6461535577000416676
       NinjaExample2_49: -4025851045069368887
       NinjaExample2_5: -7090677747435027947
-      NinjaExample2_51: 2666255186700722881
       NinjaExample2_52: -2073599435889778610
-      NinjaExample2_53: 8470202091739754266
       NinjaExample2_57: 2323608929048569517
       NinjaExample2_58: -2293839344974019489
       NinjaExample2_59: -6705339106864337115
@@ -2939,7 +2910,6 @@ TextureImporter:
       NinjaExample2_79: -5039264039431980339
       NinjaExample2_8: -1272516666623956945
       NinjaExample2_80: 8520019263855296413
-      NinjaExample2_81: -5611087868114473121
       NinjaExample2_82: 854690821736461750
       NinjaExample2_83: -5374522504022959498
       NinjaExample2_84: 5340001778007589150
@@ -2973,6 +2943,15 @@ TextureImporter:
       NinjaRun5: -1028453509107771240
       NinjaRun6: -7678524435627218849
       NinjaRun7: -176734134798887688
+      Ninja_Land_2: -5611087868114473121
+      Ninja_Land_3: 8470202091739754266
+      Ninja_Land_4: 2666255186700722881
+      Rising_kick_1: -1863323545049527356
+      Rising_kick_2: -3318577444700648402
+      Rising_kick_3: 6966392480584633744
+      Throw1: 4008673368682224854
+      Throw2: 1872588578
+      Throw3: -4566496951654521879
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
