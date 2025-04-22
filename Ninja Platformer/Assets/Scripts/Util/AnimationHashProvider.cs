@@ -12,20 +12,20 @@ namespace Util
 			MovementInput
 		}
 
-		private readonly int run = Animator.StringToHash("Movement");
-		private readonly int Jump = Animator.StringToHash("NinjaJump2");
-		private readonly int movementInput = Animator.StringToHash("RunValue");
+		private readonly int runHash = Animator.StringToHash("Run");
+		private readonly int jumpHash = Animator.StringToHash("Jump");
+		private readonly int runValueHash = Animator.StringToHash("RunValue");
 
 		public int GetAnimationHash(AnimationHash animationAction)
 		{
 			switch (animationAction)
 			{
 				case AnimationHash.Run:
-					return run;
+					return runHash;
 				case AnimationHash.Jump:
-					return Jump;
+					return jumpHash;
 				case AnimationHash.MovementInput:
-					return movementInput;
+					return runValueHash;
 				default:
 					throw new ArgumentOutOfRangeException("Animation has not been added to the list");
 			}

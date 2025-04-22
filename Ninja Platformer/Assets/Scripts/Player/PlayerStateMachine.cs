@@ -6,9 +6,7 @@ using Util;
 
 public class PlayerStateMachine : StateMachine
 {
-	[SerializeField]
-	private GameObject gameObject;
-	
+
 	[field: SerializeField]
 	public MeleeData MeleeData { get; private set; }
 

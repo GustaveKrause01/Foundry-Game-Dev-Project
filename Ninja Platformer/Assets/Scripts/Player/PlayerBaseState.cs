@@ -16,11 +16,14 @@ public class PlayerBaseState : State
     private int RunHash;
     private int movementInputHash;
 
+    private bool resetJump;
+
     public PlayerBaseState(PlayerStateMachine playerStateMachine)
     {
         this.playerStateMachine = playerStateMachine;
         JumpHash = playerStateMachine.AnimationHashProvider.GetAnimationHash(AnimationHashProvider.AnimationHash.Jump);
         RunHash = playerStateMachine.AnimationHashProvider.GetAnimationHash(AnimationHashProvider.AnimationHash.Run);
+        movementInputHash = playerStateMachine.AnimationHashProvider.GetAnimationHash(AnimationHashProvider.AnimationHash.MovementInput);
 
         this.baseScale = new Vector2(1.5f, 1.5f);
     }
@@ -34,16 +37,10 @@ public class PlayerBaseState : State
     public override void Tick(float deltaTime)
     {
         var horizontal = playerStateMachine.PlayerInput.Movement.x;
-        
         isGrounded = Physics2D.OverlapCircle(
             playerStateMachine.groundCheck.position, 
             playerStateMachine.groundRadius, 
             playerStateMachine.groundLayer);
-
-        if (horizontal != 0)
-        {
-            playerStateMachine.Animator.SetFloat("Blend", 1, 0.2f, deltaTime);
-        }
 
         playerStateMachine.Ninja.transform.localScale =
             horizontal < 0 ? new Vector2(-baseScale.x, baseScale.y) : baseScale;
@@ -54,6 +51,18 @@ public class PlayerBaseState : State
             if (controlLockTimer <= 0f)
             {
                 isJumping = false;
+                resetJump = true;
+            }
+        }
+        else
+        {
+            if (!horizontal.Equals(0f))
+            {
+                playerStateMachine.Animator.SetFloat(movementInputHash, 1, 0.2f, deltaTime);
+            }
+            else
+            {
+                playerStateMachine.Animator.SetFloat(movementInputHash, 0, 0.2f, deltaTime);
             }
         }
         
@@ -71,6 +80,12 @@ public class PlayerBaseState : State
             playerStateMachine.RigidBody2D.linearVelocity = new Vector2(
                 airControl + momentumComponent, 
                 playerStateMachine.RigidBody2D.linearVelocity.y);
+        }
+
+        if (isGrounded && resetJump)
+        {
+            SetAnimation(RunHash, 0.1f);
+            resetJump = false;
         }
     }
 

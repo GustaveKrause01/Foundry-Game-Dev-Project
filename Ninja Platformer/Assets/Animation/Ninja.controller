@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NinjaJump2
+  m_Name: Jump
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -21,32 +21,6 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 8b200e40feba79845a5381e0d1ec239c, type: 2}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
---- !u!1102 &-8675088610926064242
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: NinjaRun
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c77ad497a53a3aa488ecf1cf9ff17ced, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -91,14 +65,11 @@ AnimatorStateMachine:
     m_State: {fileID: 4268197776821217009}
     m_Position: {x: -280, y: 110, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -8675088610926064242}
-    m_Position: {x: -50, y: 120, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 2280621008977455062}
     m_Position: {x: 600, y: 180, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8855862611634581993}
-    m_Position: {x: -60, y: 170, z: 0}
+    m_Position: {x: -50, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -611398970404137487}
     m_Position: {x: 810, y: 0, z: 0}
@@ -125,7 +96,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_AnyStatePosition: {x: -30, y: -30, z: 0}
   m_EntryPosition: {x: -520, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
@@ -191,7 +162,7 @@ AnimatorController:
   m_Name: Ninja
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Blend
+  - m_Name: RunValue
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -217,7 +188,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Movement
+  m_Name: Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -320,7 +291,7 @@ BlendTree:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MovementInput
+  m_Name: RunInput
   m_Childs:
   - serializedVersion: 2
     m_Motion: {fileID: 7400000, guid: 103da1d797b39a04c809ef48742786a9, type: 2}
@@ -338,7 +309,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: Blend
+  m_BlendParameter: RunValue
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 1
