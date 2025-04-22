@@ -4911,6 +4911,50 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &686055403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 686055405}
+  - component: {fileID: 686055404}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &686055404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686055403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb26d3b6706947c387c3bb42b67ecd24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &686055405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686055403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.0536673, y: 0.88723135, z: 0.040536284}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &940765089
 GameObject:
   m_ObjectHideFlags: 0
@@ -5856,17 +5900,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25bc69947018daf4b96252e537fa6d27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameObject: {fileID: 0}
+  <MeleeData>k__BackingField: {fileID: 0}
   RigidBody2D: {fileID: 2036473180}
   Animator: {fileID: 2024975769}
   Ninja: {fileID: 2024975767}
   speed: 8
   jumpForce: 7
   jumpAngle: 50
-  isJumping: 0
   jumpControlLockTime: 0.5
   playerDirection: {fileID: 2024975768}
+  <PlayerInput>k__BackingField: {fileID: 2036473184}
   groundCheck: {fileID: 1798546077}
-  groundRadius: 0.2
+  groundRadius: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -5877,3 +5923,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 455720884}
   - {fileID: 2036473182}
+  - {fileID: 686055405}

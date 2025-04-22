@@ -2,16 +2,17 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerInput : Singleton<PlayerInput>, InputSystem_Actions.IPlayerActions
+public class PlayerInput : MonoBehaviour, InputSystem_Actions.IPlayerActions
 {
 	public Vector2 Movement { get; private set; }
 	public Action Jump { get; set; }
+	public Action Attack { get; set; }
+	
 
 	private InputSystem_Actions inputActions;
 
-	protected override void Awake()
+	private void Awake()
 	{
-		base.Awake();
 		inputActions = new InputSystem_Actions();
 		inputActions.Player.SetCallbacks(this);
 	}
@@ -40,7 +41,7 @@ public class PlayerInput : Singleton<PlayerInput>, InputSystem_Actions.IPlayerAc
 	{
 		if (context.performed)
 		{
-			Debug.Log("Attack performed");
+			Attack?.Invoke();
 		}
 	}
 

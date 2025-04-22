@@ -1,121 +1,122 @@
 using UnityEngine;
+using Util;
 
 public class PlayerBaseState : State
 {
-	private PlayerStateMachine playerStateMachine;
+    private PlayerStateMachine playerStateMachine;
 
-	public PlayerBaseState(PlayerStateMachine playerStateMachine)
-	{
-		this.playerStateMachine = playerStateMachine;
-	}
+    private bool isJumping;
+    private float controlLockTimer = 0.5f;
+    private bool isGrounded;
+    private float vx;
+    private float vy;
+    private Vector2 baseScale;
 
-	private float controlLockTimer = 0f;
-	private bool isGrounded;
-	private float vx;
-	private float vy;
+    private int JumpHash;
+    private int RunHash;
+    private int movementInputHash;
 
-	public override void Enter()
-	{
-	}
+    public PlayerBaseState(PlayerStateMachine playerStateMachine)
+    {
+        this.playerStateMachine = playerStateMachine;
+        JumpHash = playerStateMachine.AnimationHashProvider.GetAnimationHash(AnimationHashProvider.AnimationHash.Jump);
+        RunHash = playerStateMachine.AnimationHashProvider.GetAnimationHash(AnimationHashProvider.AnimationHash.Run);
 
-	public override void Tick(float deltaTime)
-	{
-		var horizontal = PlayerInput.Instance.Movement.x;
-		var vertical = PlayerInput.Instance.Movement.y;
+        this.baseScale = new Vector2(1.5f, 1.5f);
+    }
 
-		// Determine direction (-1 for left, 1 for right)
-		float direction = playerStateMachine.playerDirection.localScale.x >= 0 ? 1f : -1f;
+    public override void Enter()
+    {
+        CalculateJumpVelocity();
+        SetAnimation(RunHash, 0.1f);
+    }
+    
+    public override void Tick(float deltaTime)
+    {
+        var horizontal = playerStateMachine.PlayerInput.Movement.x;
+        
+        isGrounded = Physics2D.OverlapCircle(
+            playerStateMachine.groundCheck.position, 
+            playerStateMachine.groundRadius, 
+            playerStateMachine.groundLayer);
 
-		// Convert angle to radians
-		float radians = playerStateMachine.jumpAngle * Mathf.Deg2Rad;
+        if (horizontal != 0)
+        {
+            playerStateMachine.Animator.SetFloat("Blend", 1, 0.2f, deltaTime);
+        }
 
-		// Calculate launch velocity components
-		vx = Mathf.Cos(radians) * playerStateMachine.jumpForce * direction;
-		vy = Mathf.Sin(radians) * playerStateMachine.jumpForce;
+        playerStateMachine.Ninja.transform.localScale =
+            horizontal < 0 ? new Vector2(-baseScale.x, baseScale.y) : baseScale;
 
-		isGrounded = Physics2D.OverlapCircle(playerStateMachine.groundCheck.position, playerStateMachine.groundRadius, playerStateMachine.groundLayer);
+        if (isJumping)
+        {
+            controlLockTimer -= deltaTime;
+            if (controlLockTimer <= 0f)
+            {
+                isJumping = false;
+            }
+        }
+        
+        if (!isJumping && isGrounded)
+        {
+            playerStateMachine.RigidBody2D.linearVelocity = new Vector2(
+                horizontal * playerStateMachine.speed, 
+                playerStateMachine.RigidBody2D.linearVelocity.y);
+        }
+        else if (!isJumping && !isGrounded)
+        {
+            float airControl = horizontal * playerStateMachine.speed * 0.8f;
+            float momentumComponent = vx / 6f;
+            
+            playerStateMachine.RigidBody2D.linearVelocity = new Vector2(
+                airControl + momentumComponent, 
+                playerStateMachine.RigidBody2D.linearVelocity.y);
+        }
+    }
 
-		if (horizontal != 0)
-		{
-			playerStateMachine.Animator.SetBool("Runing", true);
-		}
-		else
-		{
-			playerStateMachine.Animator.SetBool("Runing", false);
-		}
-		if (horizontal < 0)
-		{
-			playerStateMachine.Ninja.transform.localScale = new Vector2(-1.5f, 1.5f);
-			Debug.Log("Left");
-		}
-		else if (horizontal > 0)
-		{
-			playerStateMachine.Ninja.transform.localScale = new Vector2(1.5f, 1.5f);
-			Debug.Log("Right");
-		}
+    public override void Exit()
+    {
+    }
 
-		if (playerStateMachine.isJumping)
-		{
-			controlLockTimer -= deltaTime;
-			if (controlLockTimer <= 0f)
-			{
-				playerStateMachine.isJumping = false; // regain control
-				//OnDrawGizmosSelected();
-			}
-		}
+    public override void RegisterEvent()
+    {
+        playerStateMachine.PlayerInput.Jump += StartJump;
+    }
 
-		if (isGrounded)
-		{
-			playerStateMachine.Animator.SetBool("Jumping", false);
-		}
-		else if (!isGrounded && playerStateMachine.isJumping || !isGrounded && !playerStateMachine.isJumping)
-		{
-			playerStateMachine.Animator.SetBool("Jumping", true);
-		}
+    public override void UnregisterEvent()
+    {
+        playerStateMachine.PlayerInput.Jump -= StartJump;
+    }
 
-		if (!playerStateMachine.isJumping && isGrounded)
-		{
+    private void StartJump()
+    {
+        if (isGrounded)
+        {
+            CalculateJumpVelocity();
+            PerformArcJump();
+        }
 
-			playerStateMachine.RigidBody2D.linearVelocity = new Vector2(horizontal * playerStateMachine.speed, playerStateMachine.RigidBody2D.linearVelocity.y);
+        isJumping = true;
+    }
 
-		}
-		else if (!playerStateMachine.isJumping && !isGrounded)
-		{
-			playerStateMachine.Animator.SetBool("Jumping", true);
-			playerStateMachine.RigidBody2D.linearVelocity = (new Vector2(horizontal + (vx / 6) * playerStateMachine.speed, playerStateMachine.RigidBody2D.linearVelocity.y));
-		}
-	}
+    private void CalculateJumpVelocity()
+    {
+        float direction = playerStateMachine.playerDirection.localScale.x >= 0 ? 1f : -1f;
+        float radians = playerStateMachine.jumpAngle * Mathf.Deg2Rad;
+        
+        vx = Mathf.Cos(radians) * playerStateMachine.jumpForce * direction;
+        vy = Mathf.Sin(radians) * playerStateMachine.jumpForce;
+    }
 
-	public override void Exit()
-	{
-	}
+    void PerformArcJump()
+    {
+        playerStateMachine.Animator.CrossFadeInFixedTime(JumpHash, 0.1f);
+        controlLockTimer = playerStateMachine.jumpControlLockTime;
+        playerStateMachine.RigidBody2D.linearVelocity = new Vector2(vx * 1.1f, vy);
+    }
 
-	public override void RegisterEvent()
-	{
-		PlayerInput.Instance.Jump += Jump;
-	}
-
-	public override void UnregisterEvent()
-	{
-		PlayerInput.Instance.Jump -= Jump;
-	}
-
-	private void Jump()
-	{
-		if (isGrounded && !playerStateMachine.isJumping)
-		{
-			PerformArcJump();
-		}
-	}
-
-	void PerformArcJump()
-	{
-		playerStateMachine.isJumping = true;
-		playerStateMachine.Animator.SetBool("Jumping", true);
-
-		controlLockTimer = playerStateMachine.jumpControlLockTime;
-
-		// Apply velocity
-		playerStateMachine.RigidBody2D.linearVelocity = new Vector2(vx * 1.1f, vy);
-	}
+    protected void SetAnimation(int animation, float duration)
+    {
+        playerStateMachine.Animator.CrossFadeInFixedTime(animation, duration);
+    }
 }
