@@ -63,12 +63,12 @@ public class PlayerMovement : MonoBehaviour
         }
         if (horizontal < 0)
         {
-            Ninja.transform.localScale = new Vector2(-1.5f, 1.5f);
+            Ninja.transform.localScale = new Vector2(-3.5f, 3.5f);
             Debug.Log("Left");
         }
         else if (horizontal > 0)
         {
-            Ninja.transform.localScale = new Vector2(1.5f, 1.5f);
+            Ninja.transform.localScale = new Vector2(3.5f, 3.5f);
             Debug.Log("Right");
         }
 
